@@ -50,9 +50,55 @@ export default {
                         title: 'Whole Number',
                         type: 'number',
                       },
+                      {
+                          name: 'fraction',
+                          title: 'fraction',
+                          type: 'string',
+                          options: {
+                              list: ['1/2', '1/3', '1/4', '3/4', '2/3']
+                          },
+                      },
+                      {
+                          name: 'unit',
+                          title: 'Unit',
+                          type: 'string',
+                          options: {
+                              list: ['grams', 'cup', 'Tbsp.', 'tsp.'],
+                          },
+                      },
                   ], 
-                },
+                   preview: {
+                       select: {
+                           title: 'ingredient.name',
+                           name: 'ingredient.name',
+                           media: 'ingredient.image',
+                           wholeNumber: 'wholeNumber',
+                           fraction: 'fraction',
+                           unit: 'unit',
+                       },
+                       prepare({
+                           title,
+                           subtitle,
+                           media,
+                           wholeNumber = '(No whole number set)',
+                           fraction = '(No fraction set)',
+                           unit = '(No unit set)',
+                       }) {
+                           return {
+                               title,
+                               subtitle: `${wholeNumber} ${fraction} ${unit}`,
+                               media,
+                           }
+                       }
+                   },
+                }, 
             ],
+        },
+        {
+            name: 'instructions',
+            title: 'Instructions',
+            type: 'array',
+            of: [{ type: 'block'}],
         },
     ],
 };

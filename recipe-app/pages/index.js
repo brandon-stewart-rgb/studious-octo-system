@@ -20,7 +20,7 @@ export default function Home({data}) {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
         <Link href='/about'>
-          {/* get the first title [0] */}
+          {/* get the first instance of it [0] */}
           <a>{recipes[0].title}</a>
         </Link>
 
